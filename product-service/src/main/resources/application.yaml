@@ -1,0 +1,44 @@
+spring:
+  redis:
+    host: localhost
+    port: 6379
+    timeout: 60000ms
+    lettuce:
+      pool:
+        max-active: 8
+        min-idle: 0
+        max-idle: 8
+        max-wait: -1ms
+  #  elasticsearch:
+#    uris: 9200
+  application:
+    name: product-service
+  data:
+    elasticsearch:
+      cluster-name: elasticsearch
+      cluster-nodes: 9200
+      repositories:
+        enabled: true
+
+  datasource:
+    url: "jdbc:mysql://localhost:3306/mcsv"
+    username: root
+    password: 08112001
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+server:
+  port: 8001
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
